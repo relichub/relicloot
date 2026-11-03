@@ -806,3 +806,11 @@ function close(){menu.hidden=true;toggle.setAttribute('aria-expanded','false');}
 function update(){translateCountSelector();const selected=buttons.find(b=>b.dataset.lang===language)||buttons[1];toggle.replaceChildren(selected.querySelector('img').cloneNode(true));const name=document.createElement('span');name.className='language-current-name';name.textContent=({pt:'Português',en:'English',es:'Español',pl:'Polski'})[language];toggle.append(name,document.createTextNode(' ▾'));toggle.setAttribute('aria-label',({pt:'Selecionar idioma',en:'Select language',es:'Seleccionar idioma',pl:'Wybierz język'})[language]);document.title='Relic Loot · TibiaRelic.xyz';if(language==='pl'){document.querySelector('.side-title').textContent='NARZĘDZIA ŁUPÓW';document.querySelector('.hunt-shortcuts-plaque').textContent='Skróty polowań';document.querySelector('#search').placeholder='Dodaj przedmiot';document.querySelector('#city-filter').placeholder='Filtruj miasta';}else{document.querySelector('.side-title').textContent='LOOT TOOLS';document.querySelector('.hunt-shortcuts-plaque').textContent=({pt:'Atalhos de loot',en:'Loot Shortcut',es:'Atajos de loot'})[language];}}
 toggle.addEventListener('click',()=>{menu.hidden=!menu.hidden;toggle.setAttribute('aria-expanded',String(!menu.hidden));if(!menu.hidden)buttons.find(b=>b.dataset.lang===language)?.focus();});buttons.forEach(b=>b.addEventListener('click',()=>{update();close();toggle.focus();}));document.addEventListener('click',e=>{if(!host.contains(e.target))close();});host.addEventListener('keydown',e=>{if(e.key==='Escape'){close();toggle.focus();}});update();})();
 </script>
+<style id="loot-final-sidebar-and-flags">
+.loot-side>.tools{display:none!important}
+.loot-side .filters{padding-top:16px!important}
+.masthead .languages .language-current-name,.masthead .languages .language-menu button span{display:none!important}
+.masthead .languages .language-menu{min-width:58px;width:58px;padding:5px}
+.masthead .languages .language-menu button{justify-content:center!important;gap:0!important;padding:7px!important}
+.masthead .languages .language-toggle{gap:5px!important;padding:7px 8px!important}
+</style>
